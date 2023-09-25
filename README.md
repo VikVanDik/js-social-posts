@@ -42,7 +42,7 @@ RAGIONAMENTO
 ===
 ##
 
-1. Creare l'array di oggetti con le informazioni necessarie.
+1. "Creare" l'array di oggetti con le informazioni necessarie. (non l'avevo capito che fosse tutto pronto fino a questo punto :D)
 2. Creare una card che sia delle fattezze di quella di riferimento.
 3. Ciclare l'array per stampare le card in pagina.
 4. Creare l'event listener al click del bottone del like per attivare la function del like.
