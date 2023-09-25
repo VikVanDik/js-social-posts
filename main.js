@@ -1,4 +1,5 @@
 // 1. "Creare" l'array di oggetti con le informazioni necessarie.
+
 const posts = [
     {
         "id": 1,
@@ -57,15 +58,15 @@ const posts = [
     }
 ];
 
-const numLikes = []
 const container = document.getElementById('container')
 console.log(container);
 
 container.innerHTML = ``
 
 posts.forEach(function(post){
+    
     container.innerHTML += `
-    <div class="post">
+    <div class="post" id="${post.id}">
             <div class="post__header">
                 <div class="post-meta">                    
                     <div class="post-meta__icon">
@@ -84,7 +85,7 @@ posts.forEach(function(post){
             <div class="post__footer">
                 <div class="likes js-likes">
                     <div class="likes__cta">
-                        <a class="like-button  js-like-button" href="#" data-postid="1">
+                        <a class="like-button  js-like-button" href="" data-postid="${post.id}">
                             <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
                             <span class="like-button__label">Mi Piace</span>
                         </a>
@@ -96,17 +97,23 @@ posts.forEach(function(post){
             </div>            
         </div>
         `
-    numLikes.push(post.likes)
-})
     
-console.log(numLikes);
+})
+
 const button = document.querySelector('.like-button')
-const likes = document.getElementById('like-counter-1')
 
 
 button.addEventListener ('click', liked)
-function liked (){
+
+function liked (e){
+    e.preventDefault();
     button.classList.add('like-button--liked')
-    
+    const postId = this.getAttribute("data-postid")
+    console.log(postId);
+    const counterNum = parseFloat(document.querySelector('#like-counter-1').innerHTML)
+    const counter = document.querySelector('#like-counter-1')
+    counter.innerHTML = `${counterNum + 1}`
+    console.log(counter);
+    button.removeEventListener('click', liked)
 }
 
